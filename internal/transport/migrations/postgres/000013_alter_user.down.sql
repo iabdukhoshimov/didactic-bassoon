@@ -1,0 +1,1 @@
+DROP COLUMN "organization_id" FROM "users";

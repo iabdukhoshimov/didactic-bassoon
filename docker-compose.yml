@@ -1,0 +1,46 @@
+version: "3.9"
+services:
+  database:
+    image: postgres:alpine
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: auth_service
+    logging:
+      driver: ${LOGGING_DRIVER:-json-file}
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "pg_isready",
+          "-q",
+          "-h",
+          "database",
+          "-p",
+          "5432"
+        ]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+
+  auth:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      HTTP_HOST: "0.0.0.0"
+      HTTP_PORT: 8080
+      PSQL_URI: postgres://postgres:postgres@database:5432/auth_service?sslmode=disable
+      TOKEN_SECRET: TrVQOmvnqVBlEW1SsdhasPUUDf4XPH8n5OoVgVkKrXA=
+    depends_on:
+      database:
+        condition: service_healthy
+
+volumes:
+  pg_data:

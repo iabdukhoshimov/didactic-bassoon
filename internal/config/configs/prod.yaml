@@ -1,0 +1,29 @@
+project:
+  name: &project_name "go-auth-service"
+  version: &version "0.0.1"
+  timeout: 9s
+  swagger_enabled: true
+  cache_timeout: 30m
+logging:
+  level: debug
+  log_first_n: 3
+  log_there_after: 10
+  log_interval: 1s
+  project_name: *project_name
+http:
+  host: localhost 
+  port: 8080
+grpc:
+  host: 0.0.0.0
+  port: 60000
+jwt:
+  access_life_time: 3600
+  refresh_life_time: 28800
+organization:
+  organization_token_life_time: 87600h
+notification_service:
+  smtp_host: smtp.gmail.com
+  smtp_port: 587
+  random_code_live_time: 180s
+  random_code_error_block_time: 1800s
+  random_code_error_tries_count: 3

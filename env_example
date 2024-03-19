@@ -1,0 +1,16 @@
+HTTP_HOST=0.0.0.0
+HTTP_PORT=8080
+APPLICATION_MODE=dev
+PSQL_URI=postgres://postgres:postgres@localhost:5432/go_auth_service?sslmode=disable
+REGISTRY_NAME=registry.gitlab.com
+PROJECT_NAME=auth_service
+TOKEN_SECRET=TrVQOmvnqVBlEW1SsdhasPUUDf4XPH8n5OoVgVkKrXA=
+ORGANIZATION_KEY_GENERATOR_SECRET=646834c88149f4de5a0ce27e6083cd757f75ebc9eb8a9c272e240cb433dbacb1
+ORGANIZATION_TOKEN_LIFE_TIME=87600h
+SENDER_EMAIL=otabek.gulomov.great.b@gmail.com
+SENDER_PASSWORD=mtcp btls tjuy zdrf
+REDIS_ADDRESS=localhost:6379
+RANDOM_CODE_LIVE_TIME=180s
+PRODUCT_NAME="Zimtox"
+CASBIN_CONFIG_PATH=./internal/transport/grpc/middleware/rbac.conf
+CASBIN_POLICY_PATH=./internal/transport/grpc/middleware/policy_effect.csv

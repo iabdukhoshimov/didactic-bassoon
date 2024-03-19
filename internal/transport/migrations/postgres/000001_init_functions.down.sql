@@ -1,0 +1,4 @@
+
+DROP FUNCTION IF EXISTS nanoid();
+
+DROP EXTENSION IF EXISTS pgcrypto;
