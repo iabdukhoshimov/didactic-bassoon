@@ -5,11 +5,9 @@ INSERT INTO "users" (
     "email",
     "password",
     "role",
-    "user_status",
-    "created_by",
-    "organization_id"
+    "user_status"
   )
-VALUES ($1, $2, $3, $4, $5, 'ACTIVE', $6, $7)
+VALUES ($1, $2, $3, $4, $5, 'ACTIVE')
 RETURNING "id";
 
 -- name: CreateUserWithRole :one

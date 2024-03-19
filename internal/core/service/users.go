@@ -13,7 +13,6 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/emptypb"
-	"gopkg.in/guregu/null.v4/zero"
 )
 
 type UserService struct {
@@ -38,7 +37,6 @@ func (s *UserService) CreateUser(ctx context.Context, req *pbUser.CreateUserRequ
 	dbReq.FirstName = req.FirstName
 	dbReq.LastName = req.LastName
 	dbReq.Role = sqlc.Roles(req.Role)
-	dbReq.OrganizationID = zero.StringFrom(req.OrganizationId)
 
 	existingUser, err := s.store.GetUserByEmail(ctx, req.Email)
 	if err == nil && existingUser == (sqlc.GetUserByEmailRow{}) {

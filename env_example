@@ -1,7 +1,7 @@
 HTTP_HOST=0.0.0.0
 HTTP_PORT=8080
 APPLICATION_MODE=dev
-PSQL_URI=postgres://postgres:postgres@localhost:5432/go_auth_service?sslmode=disable
+PSQL_URI=postgres://postgres:postgres@localhost:5432/go_tour?sslmode=disable
 REGISTRY_NAME=registry.gitlab.com
 PROJECT_NAME=auth_service
 TOKEN_SECRET=TrVQOmvnqVBlEW1SsdhasPUUDf4XPH8n5OoVgVkKrXA=
