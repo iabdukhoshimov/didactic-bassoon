@@ -1,0 +1,3 @@
+[submodule "tr_protos"]
+	path = tr_protos
+	url = git@gitlab.com:tour5590904/backend/tr_protos.git
