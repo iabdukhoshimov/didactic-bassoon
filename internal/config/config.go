@@ -94,8 +94,8 @@ type Config struct {
 	EmailNotificationConfig EmailNotificationConfig `yaml:"notification_service"`
 
 	Casbin struct {
-		ConfigPath string `env:"./internal/transport/grpc/middleware/rbac.conf"`
-		PolicyPath string `env:"./internal/transport/grpc/middleware/policy_effect.csv"`
+		ConfigPath string `env:" ../transport/grpc/middleware/rbac.conf"`
+		PolicyPath string `env:" ../transport/grpc/middleware/policy_effect.csv"`
 	}
 }
 
