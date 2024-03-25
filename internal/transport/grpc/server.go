@@ -3,7 +3,6 @@ package grpc
 import (
 	"context"
 
-	"github.com/casbin/casbin/v2"
 	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	"github.com/redis/go-redis/v9"
 	auth "gitlab.com/tour/generated/auth_service"
@@ -22,13 +21,13 @@ import (
 func New(repo repository.Store, redisClient *redis.Client, cfg *config.Config, logger *zap.Logger) (grpcServer *grpc.Server) {
 	issuer := security.NewIssuer(cfg)
 
-	enforcer, err := casbin.NewEnforcer(cfg.Casbin.ConfigPath, cfg.Casbin.PolicyPath)
-	if err != nil {
-		logger.Fatal("Error while initializing casbin enforcer", zap.Error(err), zap.String("config_path", cfg.Casbin.ConfigPath), zap.String("policy_path", cfg.Casbin.PolicyPath))
-		return nil
-	}
+	// enforcer, err := casbin.NewEnforcer(cfg.Casbin.ConfigPath, cfg.Casbin.PolicyPath)
+	// if err != nil {
+	// 	logger.Fatal("Error while initializing casbin enforcer", zap.Error(err), zap.String("config_path", cfg.Casbin.ConfigPath), zap.String("policy_path", cfg.Casbin.PolicyPath))
+	// 	return nil
+	// }
 
-	rbacMiddleware := middleware.NewRBACMiddleware(enforcer)
+	// rbacMiddleware := middleware.NewRBACMiddleware()
 
 	grpcServer = grpc.NewServer(
 		grpc.UnaryInterceptor(
@@ -38,7 +37,7 @@ func New(repo repository.Store, redisClient *redis.Client, cfg *config.Config, l
 
 					return middleware.JWTMiddleware(ctx, req, info, handler, issuer)
 				},
-				rbacMiddleware.ValidatePermissions,
+				// rbacMiddleware.ValidatePermissions,
 			),
 		),
 	)
