@@ -24,7 +24,7 @@ func New(repo repository.Store, redisClient *redis.Client, cfg *config.Config, l
 
 	enforcer, err := casbin.NewEnforcer(cfg.Casbin.ConfigPath, cfg.Casbin.PolicyPath)
 	if err != nil {
-		logger.Fatal("Error while initializing casbin enforcer", zap.Error(err))
+		logger.Fatal("Error while initializing casbin enforcer", zap.Error(err), zap.String("config_path", cfg.Casbin.ConfigPath), zap.String("policy_path", cfg.Casbin.PolicyPath))
 		return nil
 	}
 
